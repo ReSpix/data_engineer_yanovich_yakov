@@ -1,0 +1,58 @@
+Table action_type {
+  id integer pk
+  name text [not null]
+}
+
+records action_type(id, name) {
+  1, 'first_visit'
+  2, 'register'
+  3, 'login'
+  4, 'logout'
+  5, 'create_topic'
+  6, 'visit_topic'
+  7, 'delete_topic'
+  8, 'write_message'
+}
+
+Table users {
+  id integer pk
+  username text [unique, not null]
+  created_at timestamp [not null]
+}
+
+Table logs {
+  id integer pk
+  action integer [ref: > action_type.id, not null] 
+  user integer [ref: >users.id, null]
+  timestamp timestamp [not null]
+  target_type integer [ref: > target_types.id, null]
+  target_id integer [null]
+  success bool [not null]
+}
+
+Table target_types {
+  id integer pk
+  name text [not null]
+}
+
+records target_types(id, name) {
+  1, 'message'
+  2, 'topic'
+}
+
+Table topics {
+  id integer pk
+  title text
+  text text [not null]
+  author integer [ref: > users.id, not null]
+  deleted bool [not null, default: False]
+  created_at timestamp [not null]
+}
+
+Table messages {
+  id integer pk
+  text text [not null]
+  topic integer [ref: > topics.id, not null]
+  author integer [ref: > users.id, null]
+  created_at timestamp [not null]
+}
