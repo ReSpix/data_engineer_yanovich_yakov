@@ -47,6 +47,7 @@ python -m logs_app select --from-date 2026-01-01 --to-date 2026-01-30
 ```
 Обязательные аргументы:
 - --from-date
-- --to-date\
+- --to-date
+
 Опциональные аргументы:
 - --output (по умолчанию report.csv) - Выходной файл CSV для отчета
