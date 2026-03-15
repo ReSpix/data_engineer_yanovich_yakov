@@ -32,6 +32,7 @@ class Config:
             "database": cls.DB_NAME,
             "user": cls.DB_USER,
             "password": cls.DB_PASSWORD,
+            "options": "-c timezone=UTC"
         }
 
     @classmethod
