@@ -40,3 +40,5 @@ CREATE TABLE logs (
     target_id INTEGER,
     success BOOLEAN NOT NULL
 );
+
+CREATE INDEX logs_timestamp_idx ON logs (timestamp);
